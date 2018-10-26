@@ -46,7 +46,7 @@ app.post("/user", function(req, res){
     };
     getInfo(function(err, data){
         if (err) res.send('{"result": False}');
-        res.send(data);
+        res.send(JSON.parse(data));
     }, req.body.id, req.body.passwd);
 });
 

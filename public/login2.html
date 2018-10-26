@@ -20,14 +20,16 @@
 <script>
   function test(){
     $.ajax({
-            url:'/user',
-            type:'post',
-            data:$("form").serialize(),
+            url:'/onloan',
+            type:'GET',
+            // data:$("form").serialize(),
+            data: {id: "20143060"},
             success:function(data){
+              console.log(data);
               alert(data);
-              if(data){
-                window.location.href = '/Reservation.html';
-              }
+              // if(data.status == true && data.content.college == "소프트웨어융합대학"){
+              //   window.location.href = '/Reservation.html';
+              // }
             }
         });
   }  

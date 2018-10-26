@@ -24,8 +24,9 @@
             type:'post',
             data:$("form").serialize(),
             success:function(data){
-              alert(data);
-              if(data){
+              console.log(data);
+              alert(data.status);
+              if(data.status == true && data.content.college == "소프트웨어융합대학"){
                 window.location.href = '/Reservation.html';
               }
             }
