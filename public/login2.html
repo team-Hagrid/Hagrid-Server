@@ -3,7 +3,10 @@
 <meta charset="utf-8">
 <head>
     <title>Application</title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
     <script type="text/javascript" src="javascript.js"></script>
 <style>
  div{
@@ -16,16 +19,18 @@
 
 <script>
   function test(){
-    var one = document.getElementById("usernum").value;
-    var two = document.getElementById("passwd").value;
-    var xhr = new XMLHttpRequest;
-    xhr.open("POST", '/user', true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.onload = function(){
-      console.log(this.responseText);
-    }
-    xhr.send("id=asdfasdf&passwd=fsadf");
-  }
+    $.ajax({
+            url:'/user',
+            type:'post',
+            data:$("form").serialize(),
+            success:function(data){
+              alert(data);
+              if(data){
+                window.location.href = '/Reservation.html';
+              }
+            }
+        });
+  }  
 </script>
 </head>
 <body bgcolor=white>
@@ -36,12 +41,12 @@
 </font>
 
 <HR width=2000></div><br>
-  <form>
+  <form name="login">
 <b> 학번 :</b> <input id="usernum" type="text" name="id"></input><br><br>
 <b> 비밀번호 :</b> <input id="passwd" type="password" name="passwd"></input><br><br>
 <div id="result"></div>
 <p class ="last">
-<button id="submit" onclick='test()'><b>Submit<b></button>
+<button id="submit" type="button" onclick='test()'><b>Submit<b></button>
 <div id="result"></div>
 <br><br><br>
 <a href="index.html"><font size=10 color=black>Home</font></a>
