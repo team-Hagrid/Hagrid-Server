@@ -62,5 +62,16 @@ app.get("/goods", function(req, res){
     });
 })
 
+app.get("/onloan", function(req, res){
+    connection.query('SELECT * from onloan', function(err, rows, fields){
+        if (!err){
+            console.log('The solution is: ', rows);
+            res.send(rows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+})
+
 console.log("end if server code...");
     
