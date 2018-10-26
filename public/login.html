@@ -22,7 +22,7 @@
 </font>
 
 <HR width=2000></div><br>
-<form id="login">
+  <form action="/user" method="post">
 <b> 학번 :</b> <input type="text" name="id"></input><br><br>
 <b> 비밀번호 :</b> <input type="password" name="passwd"></input><br><br>
 
@@ -33,21 +33,5 @@
 <a href="index.html"><font size=10 color=black>Home</font></a>
 </p>
 </form>
-<script>
-  function submit(id, passwd){
-    $.ajax({
-      type: 'POST',
-      url: "/user",
-      data: {
-        "id": id,
-        "passwd": passwd
-      },
-      success: function(result){
-        document.getElementById('result').innerHTML = result;
-      },
-      dataType: 'json'
-    });
-  }
-</script>
 </body>
 </html>
