@@ -72,5 +72,38 @@ app.get("/onloan", function(req, res){
     });
 })
 
+app.get('/rent', function(req,res){
+    res.sendFile(__dirname + "/public/rent.html")
+});
+
+app.post("/rent", function(req, res){
+    var body = req.body;//pid,mid 입력받아야 함
+    connection.query('UPDATE product SET p_isb = 0 ,on_m_id = ?,on_start=NOW(),on_end = date_add(now(), interval +2 day) WHERE ? = p_id',[body.m_id, body.p_id], function(err, rows, fields) {
+        if (!err){
+            console.log('The solution is: ', rows);
+            res.send(rows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+
+})
+
+app.get('/return', function(req,res){
+    res.sendFile(__dirname + "/public/return.html")
+});
+
+app.post("/return", function(req, res){
+    var body = req.body;//pid 입력받아야 함
+    connection.query('UPDATE product SET p_isb = 1 ,on_m_id = NULL ,on_start=NULL ,on_end = NULL WHERE ? = p_id', body.p_id, function(err, rows, fields) {
+        if (!err){
+            console.log('The solution is: ', rows);
+            res.send(rows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+})
+
 console.log("end if server code...");
     
