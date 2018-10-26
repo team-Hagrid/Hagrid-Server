@@ -22,16 +22,27 @@
 </font>
 
 <HR width=2000></div><br>
-<form action="/user" method="post">
+<form action="" method="post">
 <b> 학번 :</b> <input type="text" name="id"></input><br><br>
 <b> 비밀번호 :</b> <input type="password" name="passwd"></input><br><br>
 
 <p class ="last">
-<button id="submit" type="submit"><b>Submit<b></button>
+<button id="submit" type="submit" onclick="submit"><b>Submit<b></button>
 <button id="reset" type="reset"><b>Reset<b></button>
 <br><br><br>
 <a href="index.html"><font size=10 color=black>Home</font></a>
 </p>
 </form>
+<script>
+function submit(){
+$.ajax({
+         url:'/user',
+         success:function(data){
+           a=data
+            console.log(data);
+         }
+     });
+  }
+</script>
 </body>
 </html>
