@@ -36,10 +36,10 @@
 <script>
 function submit(){
 $.ajax({
-         url:'http://ec2-18-217-64-24.us-east-2.compute.amazonaws.com:9000/user',
+         url:'/user',
          success:function(data){
            a=data
-            console.log(data);
+            console.log(123456);
          }
      });
   }
