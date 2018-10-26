@@ -5,6 +5,19 @@
     <title>Application</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
     <!-- <script type="text/javascript" src="javascript.js"></script> -->
+    <script>
+        function test(){
+          $.ajax({
+                  url:'/rent',
+                  type:'POST',
+                  data:$("form").serialize(),
+                  success:function(data){
+                    console.log(data);
+                    alert(data);
+                  }
+              });
+        }  
+    </script>
 <style>
  div{
  background-color:black
@@ -23,15 +36,13 @@
 
 <HR width=2000></div><br>
 <form>
-<b> 학번 </b> <input type="text" name="id"></input><br><br>
-<b> 이름 </b> <input type="text" name="name"></input><br><br>
-<b> 연락처 </b> <input type="text" name="phone"></input><br><br>
-<b> 이메일 </b> <input type="text" name="email"></input><br><br>
 <br>
 대여 가능 품목
+<br><br><br><br><br><br>
 
 <p class ="last">
-<button type="submit" onclick="submit"><b>Submit<b></button>
+  <button type="button"><a href="rent.html"><font size=5 color=black>다음</font></a></button>
+
 <br><br><br>
 <a href="index.html"><font size=10 color=black>Home</font></a>
 </p>

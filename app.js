@@ -79,6 +79,7 @@ app.get('/rent', function(req,res){
 app.post("/rent", function(req, res){
     var body = req.body;//pid,mid 입력받아야 함
     connection.query('UPDATE product SET p_isb = 0 ,on_m_id = ?,on_start=NOW(),on_end = date_add(now(), interval +2 day) WHERE ? = p_id',[body.m_id, body.p_id], function(err, rows, fields) {
+
         if (!err){
             console.log('The solution is: ', rows);
             res.send(rows);

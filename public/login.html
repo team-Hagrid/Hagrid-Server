@@ -18,16 +18,28 @@
 </style>
 
 <script>
-  function test(){
+  function test1(){
     $.ajax({
             url:'/user',
             type:'post',
             data:$("form").serialize(),
             success:function(data){
               console.log(data);
-              alert(data.status);
               if(data.status == true && data.content.college == "소프트웨어융합대학"){
                 window.location.href = '/Reservation.html';
+              }
+            }
+        });
+  }
+  function test2(){
+    $.ajax({
+            url:'/user',
+            type:'post',
+            data:$("form").serialize(),
+            success:function(data){
+              console.log(data);
+              if(data.status == true && data.content.college == "소프트웨어융합대학"){
+                window.location.href = '/return.html';
               }
             }
         });
@@ -47,7 +59,8 @@
 <b> 비밀번호 :</b> <input id="passwd" type="password" name="passwd"></input><br><br>
 <div id="result"></div>
 <p class ="last">
-<button id="s" type="button" onclick='test()'><b>Submit<b></button>
+<button id="s" type="button" onclick='test1()'><font size = 5>대여</font></button>
+<button id="s" type="button" onclick='test2()'><font size = 5>반납</font></button>
 <div id="result"></div>
 <br><br><br>
 <a href="index.html"><font size=10 color=black>Home</font></a>
