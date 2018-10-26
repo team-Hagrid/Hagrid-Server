@@ -1,5 +1,16 @@
 var express = require('express')
+var mysql = require('mysql')
+
 var app = express()
+var connection = mysql.createConnection({
+    host     : '35.221.74.145',
+    user     : 'root',
+    password : 'qwe123',
+    port     : 3306,
+    database : 'durithon'
+});
+
+connection.connect();
 
 var server = app.listen(9000, function(){
     console.log("Server Started!")
