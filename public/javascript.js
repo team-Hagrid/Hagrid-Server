@@ -1,21 +1,10 @@
-$(document).ready(function()
-{
-  $('#submit').click(function()
-  {
-    var c = confirm("Do you want to submit it?");
-    if(c==true)
-    {
-      alert("submission is complete.");
-    }
-    else
-    {
-      alert("submission has been canceled.");
-    }
-  })
-  $('#reset').click(function(){
-    alert("Do you want to reset it?");
-  })
-});
+// $(document).ready(function()
+// {
+//   $('#submit').click(function()
+//   {
+//     alert("SSIBAL");
+//   })
+// });
 
 ///////////////////////////////////////////////////////////////
 

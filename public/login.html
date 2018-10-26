@@ -13,6 +13,20 @@
     text-align:center;
  };
 </style>
+
+<script>
+  function test(){
+    var one = document.getElementById("usernum").value;
+    var two = document.getElementById("passwd").value;
+    var xhr = new XMLHttpRequest;
+    xhr.open("POST", '/user', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function(){
+      console.log(this.responseText);
+    }
+    xhr.send("id=asdfasdf&passwd=fsadf"); 
+  }  
+</script>
 </head>
 <body bgcolor=white>
 <ul>
@@ -22,13 +36,13 @@
 </font>
 
 <HR width=2000></div><br>
-  <form action="/user" method="post">
-<b> 학번 :</b> <input type="text" name="id"></input><br><br>
-<b> 비밀번호 :</b> <input type="password" name="passwd"></input><br><br>
-
+  <form>
+<b> 학번 :</b> <input id="usernum" type="text" name="id"></input><br><br>
+<b> 비밀번호 :</b> <input id="passwd" type="password" name="passwd"></input><br><br>
+<div id="result"></div>
 <p class ="last">
-<button id="submit" type="submit" onclick="submit"><b>Submit<b></button>
-<div id="result"></div>>
+<button id="submit" onclick='test()'><b>Submit<b></button>
+<div id="result"></div>
 <br><br><br>
 <a href="index.html"><font size=10 color=black>Home</font></a>
 </p>
