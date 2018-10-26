@@ -1,10 +1,11 @@
-// $(document).ready(function()
-// {
-//   $('#submit').click(function()
-//   {
-//     alert("SSIBAL");
-//   })
-// });
+$(document).ready(function()
+{
+  $("#submit").click(function () {  
+    $.getJSON('http://localhost:9000/goods', function (data) {  
+        console.log(data);  
+    });   
+  });  
+});
 
 ///////////////////////////////////////////////////////////////
 

@@ -44,7 +44,6 @@ app.post("/user", function(req, res){
             callback(err, results);
         });
     };
-
     getInfo(function(err, data){
         if (err) res.send('{"result": False}');
         res.send(data);
