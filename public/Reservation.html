@@ -8,12 +8,23 @@
     <script>
         function test(){
           $.ajax({
-                  url:'/rent',
-                  type:'POST',
-                  data:$("form").serialize(),
+                  url:'/goods',
+                  type:'GET',
+                  data: '',
                   success:function(data){
                     console.log(data);
-                    alert(data);
+                    // alert(data);
+                    document.getElementById("share_tbody").innerHTML += '<tr>'
+                    for(var i = 0;i < data.length;i++){
+                      if (data[i].on_m_id == null){
+                        var temp = document.getElementById("share_tbody").innerHTML;
+                        temp += '<th>' + data[i].p_name + '</th>';
+                        temp += '<th>' + data[i].p_id + '</th>';
+                        document.getElementById("share_tbody").innerHTML = temp;
+                        console.log(temp);
+                      }
+                    }
+                    document.getElementById("share_tbody").innerHTML += '</tr>'
                   }
               });
         }  
@@ -27,7 +38,7 @@
  };
 </style>
 </head>
-<body bgcolor=white>
+<body onload=test() bgcolor=white>
 <ul style="padding-left: 0px"> 
   <font size=5>
   <b><br>
@@ -38,8 +49,21 @@
 <form>
 <br>
 대여 가능 품목
-<br><br><br><br><br><br>
-
+<table id="share_table" class="table" style="margin-top: 20px;">
+    
+    <thead>
+      <tr>
+        <th>물품명</th>
+        <th>물품번호</th>
+      </tr>
+    </thead>
+  
+    <tbody id="share_tbody">
+    </tbody>
+  </table>
+  <script>
+    
+  </script>
 <p class ="last">
   <button type="button"><a href="rent.html"><font size=5 color=black>다음</font></a></button>
 

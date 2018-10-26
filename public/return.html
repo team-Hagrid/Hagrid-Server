@@ -14,6 +14,29 @@
  };
 </style>
 <script>
+      function load(){
+          $.ajax({
+                  url:'/goods',
+                  type:'GET',
+                  data: '',
+                  success:function(data){
+                    console.log(data);
+                    // alert(data);
+                    console.log(document.getElementById("user_id"));
+                    document.getElementById("share_tbody").innerHTML += '<tr>'
+                    for(var i = 0;i < data.length;i++){
+                      if (data[i].on_m_id == document.getElementById("user_id").value){
+                        var temp = document.getElementById("share_tbody").innerHTML;
+                        temp += '<th>' + data[i].p_name + '</th>';
+                        temp += '<th>' + data[i].p_id + '</th>';
+                        document.getElementById("share_tbody").innerHTML = temp;
+                        console.log(temp);
+                      }
+                    }
+                    document.getElementById("share_tbody").innerHTML += '</tr>'
+                  }
+              });
+        }  
     function test(){
       $.ajax({
               url:'/return',
@@ -38,8 +61,22 @@
 <HR width=2000></div><br>
 <form action="/return" method="post">
 
-<b> 상품번호 :</b> <input type="text" name="p_id"></input><br><br>
-
+<b> 반납할 번호 :</b> <input type="text" name="p_id"></input><br><br>
+<b>현재 대여물품 조회</b> <br/>
+학번: <input type="text" id="user_id"> <br/>
+조회: <input type="button" value="조회하기" onclick="load()"> <br/>
+<table id="share_table" class="table" style="margin-top: 20px;">
+    
+    <thead>
+      <tr>
+        <th>물품명</th>
+        <th>물품번호</th>
+      </tr>
+    </thead>
+  
+    <tbody id="share_tbody">
+    </tbody>
+  </table>
 <p class ="last">
 <button id="s" type="button" onclick='test()'><b>Submit<b></button>
 <br><br><br>
