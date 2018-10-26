@@ -27,6 +27,7 @@ function getInfo(callback, user_id, user_passwd){
         args: [user_id, user_passwd]
     };
     ps.PythonShell.run("./get_info.py", options, function(err, results){
+        // console.log(options);
         if (err) callback(err);
         callback(err, results);
     });
@@ -36,41 +37,64 @@ app.get("/", function(req, res){
     res.send("Hello World!");
 });
 
-app.post("/user", function(req, res){
-    getInfo(function(err, data){
-        if (err) res.send("{'result': False");
+app.get("/user", function(req, res){
+    console.log(req.id);
+    function user(callback){
+        var body = req.body;
+        var id = req.id;
+        var passwd = req.passwd;
+        console.log(id);
+        callback(render, id, passwd);
+    };
+
+    function render(err, data){
+        if (err) res.send("{'result': False}");
         res.json(data);
-    }, req.user, req.passwd);
+    };
+    user(getInfo);
 });
 
-app.get("/battery", function(req, res){  
+app.get("/goods", function(req, res){
     connection.query('SELECT * from product', function(err, rows, fields) {
         if (!err){
-          console.log('The solution is: ', rows);
-          res.send(rows);
+            console.log('The solution is: ', rows);
+            res.send(rows);
         }
         else
-          console.log('Error while performing Query.', err);
-      });
-    // res.send("Battery Checked");
-});
+            console.log('Error while performing Query.', err);
+    });
+})
+// app.get("/battery", function(req, res){
+//     function get_battery(callback){
+//         connection.query('SELECT * from product', function(err, rows, fields) {
+//             if (!err){
+//               console.log('The solution is: ', rows);
+//               callback(rows, );
+//             }
+//             else
+//               console.log('Error while performing Query.', err);
+//         });
+//     };
 
-app.get("/glue", function(req, res){
-    res.send("Glue Checked");
-});
+//     // res.send("Battery Checked");
+// });
 
-app.get("/charger", function(req, res){
-    res.send("Charger Checked");
-});
+// app.get("/glue", function(req, res){
+//     res.send("Glue Checked");
+// });
 
-app.get("/tape", function(req, res){
-    res.send("Tape Checked");
-});
+// app.get("/charger", function(req, res){
+//     res.send("Charger Checked");
+// });
 
-app.get("/punch", function(req, res){
-    res.send("Punch Checked");
-});
+// app.get("/tape", function(req, res){
+//     res.send("Tape Checked");
+// });
 
-app.get("/scissors", function(req, res){
-    res.send("Scissors Checked");
-});
+// app.get("/punch", function(req, res){
+//     res.send("Punch Checked");
+// });
+
+// app.get("/scissors", function(req, res){
+//     res.send("Scissors Checked");
+// });
