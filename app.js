@@ -1,7 +1,19 @@
 var express = require('express')
 var bodyParser = require("body-parser")
 var ps = require('python-shell');
+var mysql = require('mysql')
+
 var app = express()
+
+var connection = mysql.createConnection({
+    host     : '35.221.74.145',
+    user     : 'root',
+    password : 'qwe123',
+    port     : 3306,
+    database : 'durithon'
+});
+
+connection.connect();
 
 app.use(express.static('public'));
 app.use(bodyParser.json())
@@ -38,6 +50,17 @@ app.post("/user", function(req, res){
         res.send(data);
     }, req.body.id, req.body.passwd);
 });
+
+app.get("/goods", function(req, res){
+    connection.query('SELECT * from product', function(err, rows, fields) {
+        if (!err){
+            console.log('The solution is: ', rows);
+            res.send(rows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+})
 
 console.log("end if server code...");
     
