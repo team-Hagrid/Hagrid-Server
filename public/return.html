@@ -52,20 +52,21 @@
   </script>
 </head>
 <body bgcolor=white>
-<ul style="padding-left: 0px">
+    <ul style="text-align:center">
   <font size=5>
   <b><br>
-  <h2 style="color:#0099FF">&nbsp;&nbsp;물품대여</h2>
+  <h2 style="color:#0099FF">&nbsp;&nbsp;물품반납</h2>
 </font>
 
-<HR width=2000></div><br>
+<HR width=300></div><br>
 <form action="/return" method="post">
 
-<b> 반납할 번호 :</b> <input type="text" name="p_id"></input><br><br>
-<b>현재 대여물품 조회</b> <br/>
-학번: <input type="text" id="user_id"> <br/>
-조회: <input type="button" value="조회하기" onclick="load()"> <br/>
-<table id="share_table" class="table" style="margin-top: 20px;">
+
+<h3>현재 대여물품 조회</h3>
+학번: <input type="text" id="user_id"> <br/><br>
+<button id="sasd" type="button" onclick='load()'><font size=4>조회</font></button>
+<br/><br>
+<table id="share_table" class="table" style="margin-left:auto; margin-right:auto;">
     
     <thead>
       <tr>
@@ -77,10 +78,12 @@
     <tbody id="share_tbody">
     </tbody>
   </table>
+  <br><br><br><br><br><br><br><br><br>
+  <h3> 반납할 물품의 번호를 입력해 주세요.</h3> <input type="text" name="p_id"></input><br>
 <p class ="last">
-<button id="s" type="button" onclick='test()'><b>Submit<b></button>
-<br><br><br>
-<a href="index.html"><font size=10 color=black>Home</font></a>
+<button id="s" type="button" onclick='test()'><font size=4>반납</font></button>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<a href="index.html"><font size=6 color=black>Home</font></a>
 </p>
 </form>
 </body>

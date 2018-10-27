@@ -38,7 +38,7 @@
             data:$("form").serialize(),
             success:function(data){
               console.log(data);
-              alert(data);
+              // alert(data);
               if(data.status == true && (data.content.school == "컴퓨터공학부" || data.content.school =="소프트웨어학부")){
                 window.location.href = '/return.html';
               }
