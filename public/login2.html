@@ -18,37 +18,56 @@
 </style>
 
 <script>
-  function test(){
-    $.ajax({
-            url:'/onloan',
-            type:'GET',
-            // data:$("form").serialize(),
-            data: {id: "20143060"},
-            success:function(data){
-              console.log(data);
-              alert(data);
-              // if(data.status == true && data.content.college == "소프트웨어융합대학"){
-              //   window.location.href = '/Reservation.html';
-              // }
-            }
-        });
-  }  
+function load(){
+          $.ajax({
+                  url:'/goods',
+                  type:'GET',
+                  data: '',
+                  success:function(data){
+                    console.log(data);
+                    // alert(data);
+                    console.log(document.getElementById("user_id"));
+                    document.getElementById("share_tbody").innerHTML += '<tr>'
+                    for(var i = 0;i < data.length;i++){
+                      if (data[i].on_m_id == document.getElementById("user_id").value){
+                        var temp = document.getElementById("share_tbody").innerHTML;
+                        temp += '<th>' + data[i].p_name + '</th>';
+                        temp += '<th>' + data[i].p_id + '</th>';
+                        document.getElementById("share_tbody").innerHTML = temp;
+                        console.log(temp);
+                      }
+                    }
+                    document.getElementById("share_tbody").innerHTML += '</tr>'
+                  }
+              });
+        }  
 </script>
 </head>
 <body bgcolor=white>
 <ul>
   <font size=5>
   <b><br>
-  <h2 style="color:#0099FF">&nbsp;&nbsp;로그인</h2>
+  <h2 style="color:#0099FF">&nbsp;&nbsp;대여물품 조회</h2>
 </font>
 
 <HR width=2000></div><br>
   <form name="login">
-<b> 학번 :</b> <input id="usernum" type="text" name="id"></input><br><br>
+<b> 학번 :</b> <input id="user_id" type="text" name="id"></input><br><br>
 <div id="result"></div>
 <p class ="last">
-<button id="submit" type="button" onclick='test()'><b>Submit<b></button>
-<div id="result"></div>
+<button id="submit" type="button" onclick='load()'><b>Submit<b></button>
+  <table id="share_table" class="table" style="margin-top: 20px;">
+    
+      <thead>
+        <tr>
+          <th>물품명</th>
+          <th>물품번호</th>
+        </tr>
+      </thead>
+    
+      <tbody id="share_tbody">
+      </tbody>
+    </table>
 <br><br><br>
 <a href="index.html"><font size=10 color=black>Home</font></a>
 </p>
