@@ -25,7 +25,7 @@
             data:$("form").serialize(),
             success:function(data){
               console.log(data);
-              if(data.status == true && data.content.college == "소프트웨어융합대학"){
+              if(data.status == true && (data.content.school == "컴퓨터공학부" || data.content.school =="소프트웨어학부")){
                 window.location.href = '/Reservation.html';
               }
             }
@@ -38,7 +38,8 @@
             data:$("form").serialize(),
             success:function(data){
               console.log(data);
-              if(data.status == true && data.content.college == "소프트웨어융합대학"){
+              alert(data);
+              if(data.status == true && (data.content.school == "컴퓨터공학부" || data.content.school =="소프트웨어학부")){
                 window.location.href = '/return.html';
               }
             }
@@ -47,23 +48,25 @@
 </script>
 </head>
 <body bgcolor=white>
-<ul style="padding-left: 0px">
+<ul style="text-align:center">
   <font size=5>
   <b><br>
   <h2 style="color:#0099FF">&nbsp;&nbsp;로그인</h2>
 </font>
 
-<HR width=2000></div><br>
+<HR width=300></div><br><br>
+  국민대학교 종합정보시스템 정보로 로그인하세요.<br><br><br>
   <form name="login">
 <b> 학번 :</b> <input id="usernum" type="text" name="id"></input><br><br>
 <b> 비밀번호 :</b> <input id="passwd" type="password" name="passwd"></input><br><br>
 <div id="result"></div>
 <p class ="last">
-<button id="s" type="button" onclick='test1()'><font size = 5>대여</font></button>
-<button id="s" type="button" onclick='test2()'><font size = 5>반납</font></button>
+<button id="s2" type="button" onclick='test1()'><font size = 6>대여</font></button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button id="s" type="button" onclick='test2()'><font size = 6>반납</font></button>
 <div id="result"></div>
 <br><br><br>
-<a href="index.html"><font size=10 color=black>Home</font></a>
+<a href="index.html"><font size=5 color=black>Home</font></a>
 </p>
 </form>
 </body>
